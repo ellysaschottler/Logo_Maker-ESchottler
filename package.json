@@ -1,0 +1,12 @@
+{
+  "name": "logo_maker-eschottler",
+  "version": "1.0.0",
+  "description": "An application to make a basic logo with your choice of initials, color, and shape.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
