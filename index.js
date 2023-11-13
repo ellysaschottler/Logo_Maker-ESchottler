@@ -53,8 +53,9 @@ function init() {
 //Initialize the app
 init()
 
-
+// generate the code to write the SVG file with the user's input
 function generateSVG ({textContent, textColor, shapeName, shapeColor}){
+    //create a shape const from the user input
     const shapeInput = new Shape[shapeName]();
 
     return`
