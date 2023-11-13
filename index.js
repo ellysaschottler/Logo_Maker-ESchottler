@@ -1,7 +1,7 @@
 // Packages and imports needed for this application
 const inquirer =  require('inquirer');
 const fs = require('fs');
-const Shape = require("./shapes")
+const Shape = require('./lib/shapes')
 
 // An array of questions for user input
 const questions =[
@@ -45,28 +45,63 @@ function writeToFile(fileName, data){
 //Function to initialize the app
 function init() {
     inquirer.prompt(questions).then((answers) => {
-        const svgContent = generateSVG(answers);
+        //instantiate the shape from user input
+        let shapeInstance
+
+        switch (answers.shapeName){
+            case 'Square':
+                shapeInstance = new Square(answers.textContent, answers.textColor, answers.shapeColor);
+                break;
+            case 'Rectangle': 
+                shapeInstance = new Rectangle(answers.textContent, answers.textColor, answers.shapeColor);
+                break;
+            case 'Circle':
+                shapeInstance = new Circle(answers.textContent, answers.textColor, answers.shapeColor);
+                break;
+            case 'Ellipse':
+                shapeInstance = new Ellipse(answers.textContent, answers.textColor, answers.shapeColor);
+                break;
+            case 'Triangle':
+                shapeInstance = new Triangle(answers.textContent, answers.textColor, answers.shapeColor);
+                break;
+            return;    
+        }
+        const svgContent = shapeInstance.generateSVG();
         writeToFile('logo.svg', svgContent);
     });
 }
 
+
+
 //Initialize the app
 init()
 
-// generate the code to write the SVG file with the user's input
-function generateSVG ({textContent, textColor, shapeName, shapeColor}){
-    //create a shape const from the user input
-    const shapeInput = new Shape[shapeName]();
 
-    return`
-   <svg version="1.1"
-        width="300" height="200"
-        xmlns="http://www.w3.org/2000/svg">
 
-        <${shapeInput.shapeAttributes} fill="${shapeColor}" />
 
-        <text x=${shapeInput.textX} y=${shapeInput.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
 
-        </svg>
-   `
-}
+
+
+
+
+
+
+
+// // generate the code to write the SVG file with the user's input
+// function generateSVG ({textContent, textColor, shapeName, shapeColor}){
+//     //create a shape const from the user input
+//     const shapeInput = new `${shapeName}`();
+//     console.log(ShapeClass)
+
+//     return`
+//    <svg version="1.1"
+//         width="300" height="200"
+//         xmlns="http://www.w3.org/2000/svg">
+
+//         <${shapeInput.shapeAttributes} fill="${shapeColor}" />
+
+//         <text x=${shapeInput.textX} y=${shapeInput.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
+
+//         </svg>
+//    `
+// }
