@@ -1,4 +1,4 @@
-// Packages needed for this application
+// Packages and imports needed for this application
 const inquirer =  require('inquirer');
 const fs = require('fs');
 const Shape = require("./shapes")
@@ -55,14 +55,16 @@ init()
 
 
 function generateSVG ({textContent, textColor, shapeName, shapeColor}){
+    const shapeInput = new Shape[shapeName]();
+
     return`
    <svg version="1.1"
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
 
-        <${shapeName.shapeAttributes} fill="${shapeColor}" />
+        <${shapeInput.shapeAttributes} fill="${shapeColor}" />
 
-        <text x=${shapeName.textX} y=${shapeName.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
+        <text x=${shapeInput.textX} y=${shapeInput.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
 
         </svg>
    `
