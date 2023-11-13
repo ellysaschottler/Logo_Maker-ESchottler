@@ -1,6 +1,7 @@
 // Packages needed for this application
 const inquirer =  require('inquirer');
 const fs = require('fs');
+const Shape = require("./shapes")
 
 // An array of questions for user input
 const questions =[
@@ -43,7 +44,7 @@ function writeToFile(fileName, data){
 
 //Function to initialize the app
 function init() {
-    inquirer.createPromptModule(questions).then((answers) => {
+    inquirer.prompt(questions).then((answers) => {
         const svgContent = generateSVG(answers);
         writeToFile('logo.svg', svgContent);
     });
@@ -54,15 +55,15 @@ init()
 
 
 function generateSVG ({textContent, textColor, shapeName, shapeColor}){
+    return`
+   <svg version="1.1"
+        width="300" height="200"
+        xmlns="http://www.w3.org/2000/svg">
 
-   `<svg version="1.1"
-   width="300" height="200"
-   xmlns="http://www.w3.org/2000/svg">
+        <${shapeName.shapeAttributes} fill="${shapeColor}" />
 
-<${shapeName.shapeAttributes} fill="${shapeColor}" />
+        <text x=${shapeName.textX} y=${shapeName.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
 
-<text x=${shapeName.textX} y=${shapeName.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
-
-</svg>
+        </svg>
    `
 }
