@@ -1,10 +1,3 @@
-
-// full code for circle with the text SVG in the center for reference
-/* <svg width="100" height="100">
-   <circle cx="50" cy="50" r="50" fill="yellow" />
-   <text x="40" y="50" class="small">SVG</text>
-</svg> 
-  */
 // Packages needed for this application
 const inquirer =  require('inquirer');
 const fs = require('fs');
@@ -40,6 +33,25 @@ const questions =[
         message: 'What color do you want the shape to be? Type in the name of a color or the hex code:',
     }
 ]
+
+//Function to write SVG file
+function writeToFile(fileName, data){
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.log(err) : console.log('Generated logo.svg')
+    );
+}
+
+//Function to initialize the app
+function init() {
+    inquirer.createPromptModule(questions).then((answers) => {
+        const svgContent = generateSVG(answers);
+        writeToFile('logo.svg', svgContent);
+    });
+}
+
+//Initialize the app
+init()
+
 
 function generateSVG ({textContent, textColor, shapeName, shapeColor}){
 
