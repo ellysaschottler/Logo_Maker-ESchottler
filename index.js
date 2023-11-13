@@ -42,13 +42,14 @@ const questions =[
 ]
 
 function generateSVG ({textContent, textColor, shapeName, shapeColor}){
+
    `<svg version="1.1"
    width="300" height="200"
    xmlns="http://www.w3.org/2000/svg">
 
-<circle cx="50" cy="50" r="50" fill="${shapeColor}" />
+<${shapeName.shapeAttributes} fill="${shapeColor}" />
 
-<text x="150" y="125" font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
+<text x=${shapeName.textX} y=${shapeName.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
 
 </svg>
    `
