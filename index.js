@@ -8,7 +8,14 @@ const questions =[
     {
         type: 'input',
         name: 'textContent',
-        message: 'What initials do you want to use on your logo? Type in up to three:'
+        message: 'What initials do you want to use on your logo? Type in up to three:',
+        validate: function (input) {
+            if (input.length <=3) {
+                return true;
+            } else {
+                return 'You cannot enter more than 3 letters'
+            }
+        }
     },
     {
         type: 'input',
@@ -71,37 +78,6 @@ function init() {
     });
 }
 
-
-
 //Initialize the app
 init()
 
-
-
-
-
-
-
-
-
-
-
-
-// // generate the code to write the SVG file with the user's input
-// function generateSVG ({textContent, textColor, shapeName, shapeColor}){
-//     //create a shape const from the user input
-//     const shapeInput = new `${shapeName}`();
-//     console.log(ShapeClass)
-
-//     return`
-//    <svg version="1.1"
-//         width="300" height="200"
-//         xmlns="http://www.w3.org/2000/svg">
-
-//         <${shapeInput.shapeAttributes} fill="${shapeColor}" />
-
-//         <text x=${shapeInput.textX} y=${shapeInput.textY} font-size="40" text-anchor="middle" fill="${textColor}">${textContent}</text>
-
-//         </svg>
-//    `
-// }
