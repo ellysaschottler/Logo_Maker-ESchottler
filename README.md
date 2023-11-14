@@ -8,7 +8,7 @@ An application to make a basic logo with your choice of initials, color, and sha
 
 ## Installation
 
-Run 'npm i' in the terminal, run 'node index.js', answer the prompts and find your logo.svg created after the prompts have beem answered.  
+Run 'npm i' in the terminal, run 'node index.js', answer the prompts and find your logo.svg created after the prompts have been answered.  
 
 ## Usage
 
