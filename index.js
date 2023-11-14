@@ -1,7 +1,7 @@
 // Packages and imports needed for this application
 const inquirer =  require('inquirer');
 const fs = require('fs');
-const Shape = require('./lib/shapes')
+const { Shape, Square, Rectangle, Circle, Ellipse, Triangle } = require('./lib/shapes.js')
 
 // An array of questions for user input
 const questions =[
